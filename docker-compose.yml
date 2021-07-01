@@ -16,8 +16,8 @@ services:
       - POSTGRES_DB=nextcloud   # DB명
       - POSTGRES_USER=hyper     # postgres 유저명
       - POSTGRES_PASSWORD=hyper     # postgres 비밀번호
-      - NEXTCLOUD_ADMIN_USER=admin     # nextcloud admin 계정 유저명
-      - NEXTCLOUD_ADMIN_PASSWORD=adminpw     # nextcloud admin 계정 비밀번호
+      # - NEXTCLOUD_ADMIN_USER=admin     # nextcloud admin 계정 유저명
+      # - NEXTCLOUD_ADMIN_PASSWORD=adminpw     # nextcloud admin 계정 비밀번호
 
   app:
     image: nextcloud
@@ -35,6 +35,7 @@ services:
       - POSTGRES_DB=nextcloud   # DB명
       - POSTGRES_USER=hyper     # postgres 유저명
       - POSTGRES_PASSWORD=hyper     # postgres 비밀번호
-      - NEXTCLOUD_ADMIN_USER=admin     # nextcloud admin 계정 유저명
-      - NEXTCLOUD_ADMIN_PASSWORD=adminpw     # nextcloud admin 계정 비밀번호
+      ## NEXTCLOUD_ADMIN을 설정하면 최초 웹 페이지 접속 시 admin 생성 과정을 거치지 않음 (대신, 추가 app 설치도 불가능)
+      # - NEXTCLOUD_ADMIN_USER=admin     # nextcloud admin 계정 유저명
+      # - NEXTCLOUD_ADMIN_PASSWORD=adminpw     # nextcloud admin 계정 비밀번호
       # - NEXTCLOUD_TRUSTED_DOMAINS=172.27.62.170:8080  --> 적용 안됨

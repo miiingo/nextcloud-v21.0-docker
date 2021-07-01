@@ -19,7 +19,7 @@ mkdir -p /docker/nextcloud/db
 
 # Nextcloud 프로젝트 복제
 cd /opt/gopath/src/github.com/honeybee
-git clone https://github.com/miiingo/nextcloud-v21.0-docker
+git clone https://github.com/miiingo/nextcloud-v21.0-docker nextcloud
 
 ```
 
@@ -28,7 +28,7 @@ git clone https://github.com/miiingo/nextcloud-v21.0-docker
 
 ```bash
 # Nextcloud 실행
-cd /opt/gopath/src/github.com/honeybee/nextcloud-v21.0-docker
+cd /opt/gopath/src/github.com/honeybee/nextcloud
 docker-compose up -d
 
 ```
@@ -70,7 +70,7 @@ sudo vi /docker/nextcloud/config/config.php
 
 ```bash
 # Nextcloud 종료
-cd /opt/gopath/src/github.com/honeybee/nextcloud-v21.0-docker
+cd /opt/gopath/src/github.com/honeybee/nextcloud
 docker-compose down
 
 # 볼륨 처리한 이전 데이터 삭제 필요 시 다음 실행 
