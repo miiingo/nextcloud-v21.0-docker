@@ -1,4 +1,4 @@
-# [Ubuntu]] Ubuntu 18.04에 Nextcloud 21.0 버전을 Docker로 실행
+# [Ubuntu] Ubuntu 18.04에 Nextcloud 21.0 버전을 Docker로 실행
 
 ## ■ 버전 설명
 
