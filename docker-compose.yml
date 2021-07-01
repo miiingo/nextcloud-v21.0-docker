@@ -1,0 +1,40 @@
+version: '2'
+
+# Docker Volume 이용 시 아래 내용 주석 해제
+# volumes:
+#   nextcloud:
+#   db:
+
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      # - db:/var/lib/postgresql/data   # Docker Volume 이용
+      - /docker/nextcloud/db:/var/lib/postgresql/data   # 호스트 경로 볼륨 처리
+    environment:
+      - POSTGRES_DB=nextcloud   # DB명
+      - POSTGRES_USER=hyper     # postgres 유저명
+      - POSTGRES_PASSWORD=hyper     # postgres 비밀번호
+      - NEXTCLOUD_ADMIN_USER=admin     # nextcloud admin 계정 유저명
+      - NEXTCLOUD_ADMIN_PASSWORD=adminpw     # nextcloud admin 계정 비밀번호
+
+  app:
+    image: nextcloud
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+    volumes:
+      # - nextcloud:/var/www/html   # Docker Volume 이용
+      - /docker/nextcloud:/var/www/html   # 호스트 경로 볼륨 
+    environment:
+      - VIRTUAL_HOST=nextcloud.honeybee.com
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=nextcloud   # DB명
+      - POSTGRES_USER=hyper     # postgres 유저명
+      - POSTGRES_PASSWORD=hyper     # postgres 비밀번호
+      - NEXTCLOUD_ADMIN_USER=admin     # nextcloud admin 계정 유저명
+      - NEXTCLOUD_ADMIN_PASSWORD=adminpw     # nextcloud admin 계정 비밀번호
+      # - NEXTCLOUD_TRUSTED_DOMAINS=172.27.62.170:8080  --> 적용 안됨
